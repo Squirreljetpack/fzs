@@ -443,13 +443,15 @@ Disadvantages:
 
 
 
-[^1]: FZS also provides `this(){echo ${${funcstack[2]}%%.*};}` which can used to refer to the current plugin's alias inside a function one level deep if the default fn_template is kept, but this is clearly not advised. 
+[^1]: FZS also provides `this(){echo ${${funcstack[2]}%%.*};}` which can used to refer to the current plugin's alias inside a function one level deep if the default fn_template is kept, but it isn't a long-term solution. 
 
 # Todo
+>[!NOTE]
+> The main functionality of fzs has all been **implemented and tested**.
+> The remaining minor improvements which are mentioned above and below are planned but haven't a concrete timeline.
 
-- [ ] Release
+- [X] Release
   - [ ] Github actions (Upload release)
-  - [ ] CHANGELOG
   - [ ] Refactor
   - [ ] Tests on all platforms
   - [ ] Wiki
