@@ -156,13 +156,13 @@ fns = [
 ]
 
 # MAIN
-# This is one I actually use. Having each option start with a different letter makes selection quicker.
+# Having each option start with a different letter makes selection quicker.
 [[plugins]]
 name = "main"
 alias = "m"
 fns = [
     { name = "command.wg", alias="ffex", flags = [ "WG" ], binds = ["^[^X"] }, # defined as a widget in, say, $HOME/.zsh/paths/main_select/main.zshrc
-    { name = "background", flags = [ "PG" ] }, # lives as background_select somewhere inside `root_dir`
+    { name = "background", flags = [ "PG" ] }, # references a folder named background_select somewhere inside `root_dir`
     { name = "explain", flags = [ "PG" ] },
     { name = "find", flags = [ "PG" ] },
     { name = "git", flags = [ "PG" ] },
