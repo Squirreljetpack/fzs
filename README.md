@@ -423,12 +423,12 @@ Advantages:
 
 Disadvantages:
 
-- Doesn't provide true modularity for your scripts, so that renaming your plugin may break functions that rely on it. In particular, [`$this`](#source files) cannot be used within a function.[^1]
+- Doesn't provide true modularity for your scripts, so that renaming your plugin may break functions that rely on it. In particular, [`$this`](#source-files) cannot be used within a function.[^1]
 
 # FAQ
 
 - Do not make sourced files executable (You can use `fd -g "*.zshrc" -t x -x chmod -x`)
-- When parsing fns from files, the available function characters are limited to A-Za-z0-9_ due to shell syntax. You can use the `config.toml` to override if necessary. It is also recommended to use camelCase if your name or alias consists of multiple words.
+- When parsing fns from files, the available function characters are limited to `A-Za-z0-9_` due to shell syntax. You can use the `config.toml` to override if necessary. It is also recommended to use camelCase if your name or alias consists of multiple words.
 - Use the [base plugin](#usage-tips) to gather binaries without namespacing
 - If your binds don't register, make sure to load your fzs_plugins file(s) after other zsh plugins
 - How to always properly fold fzf preview?
