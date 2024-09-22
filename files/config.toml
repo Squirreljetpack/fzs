@@ -1,0 +1,74 @@
+[[plugins]]
+name = "ai"
+fns = [{ name = "aichat", cmd = "aichat", alias = "ai" }]
+
+[[plugins]]
+name = "l"
+fns = [
+  # convenient view, sort by modification, newest at bottom
+  { name = "human", cmd = "l.eza --group-directories-first --git -T --icons --hyperlink", alias = "lh" },
+  { name = "git", cmd = "l.eza --group-directories-first --git -T --icons --hyperlink", alias = "lg" },
+  { name = "t-alias", cmd = "l.eza -a -T --icons --color-scale", alias = "lttt" },
+
+
+]
+
+[[plugins]]
+name = "nav"
+fns = [
+  { name = "readvols", cmd = "l.eza --color=never | xargs -L1 evince", binds = [
+    "^[OR",
+  ] },
+  # todo: znav
+]
+
+[[plugins]]
+name = "peek"
+fns = [
+  { name = "function_three", desc = "Third function", cmd = "cmd3" },
+  { name = "run", binds = [
+    "^[z",
+  ] },
+  { name = "command", flags = [
+    "WG",
+  ], binds = [
+    "^[^X",
+  ] },
+]
+
+# MAIN
+[[plugins]]
+name = "main"
+alias = "ff"
+fns = [
+  { name = "window", desc = "Third function", cmd = "cmd3" },
+  { name = "run", binds = [
+    "^[z",
+  ] },
+  { name = "command", alias = "ffex", flags = [
+    "WG",
+  ], binds = [
+    "^[^X",
+  ] }, # test alias
+]
+
+[[plugins]]
+name = "network"
+
+[[plugins]]
+name = "docker"
+functions = [
+  # -sV=1.36 may be necessary?
+  { name = "file", cmd = "docker run -v /var/run/docker.sock:/var/run/docker.sock --rm alpine/dfimage" },
+  { name = "dive", cmd = "docker run -ti --rm  -v /var/run/docker.sock:/var/run/docker.sock wagoodman/dive" },
+]
+
+[[plugins]]
+name = "obsidian"
+functions = [{ name = "open-vault", flags = ["WG"] }]
+
+[[plugins]]
+name = "zoxide"
+
+[settings]
+root_dir = "$HOME/Desktop/quickshare/work/test"

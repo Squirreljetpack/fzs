@@ -1,0 +1,39 @@
+[tasks.test]
+command = "cargo"
+args = ["test", "--verbose"]
+
+[tasks.run]
+command = "cargo"
+args = ["run"]
+env = { RUST_LOG = "DEBUG" }
+
+
+# haven't tried cargo build --target yet but cross seems simple
+# also check https://github.com/houseabsolute/actions-rust-cross for github action
+[tasks.build-linux]
+command = "./scripts/cross-build"
+args = ["x86_64-unknown-linux-gnu"]
+# env = { RUSTFLAGS = "-D warnings" }
+
+[tasks.build-windows]
+command = "./scripts/cross-build"
+args = ["x86_64-pc-windows-gnu"]
+# env = { RUSTFLAGS = "-D warnings" }
+
+# https://github.com/cross-rs/cross-toolchains
+# Des this need to be executed on mac?
+# rustup target add x86_64-apple-darwin
+#  doesn't work for now
+[tasks.build-macos]
+command = "cargo"
+args = ["build", "--target", "aarch64-apple-darwin", "--release"]
+condition = { platforms = ["mac"] }
+
+# for some reason tasks.build autoinvokes "Execute Command: "cargo" "build" "--all-features""
+[tasks.all]
+description = "Builds the project for multiple platforms"
+dependencies = [
+  "build-linux",
+  "build-windows",
+  "build-macos"
+]

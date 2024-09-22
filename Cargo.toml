@@ -1,0 +1,20 @@
+[package]
+name = "fzs"
+version = "0.2.0"
+edition = "2021"
+description = "Organize and select your programs"
+license = "MIT" # Or whichever license you prefer
+repository = "https://github.com/squirreljetpack/fzs"
+keywords = ["fzf", "zsh", "shell", "organization"]
+categories = ["config", "development-tools", "command-line-utilities", "filesystem"]
+
+[dependencies]
+derive_more = { version = "1.0.0", features = ["full"] }
+env_logger = "0.11.5"
+is_executable = "1.0.1"
+log = "0.4.22"
+regex = "1.10.6"
+serde = { version = "1", features = ["derive"] }
+symlink = "0.1.0"
+tempfile = "3.12.0"
+toml = "^0.8.19"

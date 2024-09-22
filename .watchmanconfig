@@ -1,0 +1,6 @@
+{
+  "ignore_dirs": ["target", "docs", "scripts", ".git"],
+  "ignore_vcs": [".git", ".hg", ".svn"],
+  "suppress_recrawl_warnings": true,
+  "settle": 1000
+}

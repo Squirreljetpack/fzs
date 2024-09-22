@@ -1,0 +1,26 @@
+#!/bin/zsh
+setopt -euo pipefail
+
+if [ -z "$1" ]; then
+    echo "Usage: $0 <target>"
+    exit 1
+fi
+
+rootdir=$(git rev-parse --show-toplevel)
+cd "$rootdir"
+TARGET=$1
+
+mkdir -p logs
+cross build --target "$TARGET" --release >logs/$TARGET.log 2>&1
+
+RELEASE_DIR="target/$TARGET/release"
+[ -t 0 ] && [ -t 1 ] && ls "$RELEASE_DIR"/*.d | bat._for 
+
+# if [ -d "$RELEASE_DIR" ]; then
+#     # fd --max-depth 1 -t x --search-path "$RELEASE_DIR"
+#     find "$RELEASE_DIR" -maxdepth 1 -type f -executable
+# else
+#     echo "Release directory not found." >&2
+#     exit 1
+# fi
+
