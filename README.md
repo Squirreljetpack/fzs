@@ -111,7 +111,7 @@ The are allowed on executable filenames too, after the first period. i.e. `rg.wj
 ## Installation
 
 1. Install [fzf](https://github.com/junegunn/fzf?tab=readme-ov-file#installation)
-   - You may want to configure `FZF_DEFAULT_OPTS` as well ([See](#usage tips)).
+   - You may want to configure `FZF_DEFAULT_OPTS` as well ([See](#usage-tips)).
 2. One of:
 
 ```shell
@@ -428,8 +428,8 @@ Disadvantages:
 # FAQ
 
 - Do not make sourced files executable (You can use `fd -g "*.zshrc" -t x -x chmod -x`)
-- When parsing fns from files, the available function characters are limited to A-Za-z0-9_ due to shell syntax. You can use the config.toml to override if necessary. It is also recommended to use camelCase if your name or alias consists of multiple words.
-- Use the [base plugin](#Usage tips) to gather binaries without namespacing
+- When parsing fns from files, the available function characters are limited to A-Za-z0-9_ due to shell syntax. You can use the `config.toml` to override if necessary. It is also recommended to use camelCase if your name or alias consists of multiple words.
+- Use the [base plugin](#usage-tips) to gather binaries without namespacing
 - If your binds don't register, make sure to load your fzs_plugins file(s) after other zsh plugins
 - How to always properly fold fzf preview?
   - I don't know ... `fold -w \${FZF_PREVIEW_COLUMNS}` works okay sometimes.
