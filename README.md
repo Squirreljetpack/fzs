@@ -75,7 +75,7 @@ The functions get symlinked to fn_template (Default: `{{ pg_alias }}.{{ name }}`
 
 <img src=".README.assets/main_plugins.png" alt="main_plugins" width="50%"/> <img src=".README.assets/docker_plugin.png" alt="docker_plugin" width="50%"/>
 
-Plugins can also be configured in non-executable files with a specific extension within the associated directory (Default: `.zshrc`), allowing you to effortlessly include your aliases and shell functions (more on that below).
+Plugins can also be configured in *sources*: non-executable files with a specific extension within the associated directory (Default: `.zshrc`), allowing you to effortlessly include your aliases and shell functions (more on that below).
 
 > [!NOTE]
 >
@@ -84,7 +84,7 @@ Plugins can also be configured in non-executable files with a specific extension
 >
 > This is helpful for helper scripts, you may choose to use a folder name like `_docker_libs` or `_provision_terraform-libs`.
 
-Next, the `.zshrc` files are scanned for lines beginning with `# :`. Include this above your function, named like `$name_alias?_description?` (The same `fn_regex`, but prefixed with a `$`), and your function will be included in the plugin, just like an actual binary.
+Next, the sources are scanned for lines beginning with `# :`. Include this above your function, named like `$name_alias?_description?` (The same `fn_regex`, but prefixed with a `$`), and your function will be included in the plugin, just like an actual binary.
 
 > [!NOTE]
 >
@@ -346,7 +346,7 @@ struct GlobalConfig {
     fn_table_template: String, // The format used to pass a function into the fzf selector, see # Templates
     all_fn_table_template: String, // The format used to pass a function into the fzf selector for all functions, see # Templates
     template_file: PathBuf, // The template file used to build a selector widget. Allows for full customization of the selector behavior. One is created by default in config_dir if not specified.
-    init_file: PathBuf, // The path to use for the generated file which initializes fzs and sources your .zshrc scripts, relative to `data_dir`.
+    init_file: PathBuf, // The path to use for the generated file which initializes fzs and sources your source scripts, relative to `data_dir`.
     fzs_name: String,  // The namespace for fzs related helper shell functions
     generated_file: PathBuf,  // The path to use for the generated file which initializes plugins, relative to `data_dir`.
     plugin_selector_binds: Keybinds,  // The keybinds to activate the selector for all plugins (default: ^[p)
@@ -376,8 +376,8 @@ enum FnFlag {
     NA, // NoAdd: The default flag for an executable in a linkedbin folder.
     NR, // NR: When selected, fzs will not run the command, only add it to your command line buffer.
     NN, // The function is not namespaced, you can call it directly by it's name
-    CMD, // Only inside .zshrc: Treats the following function declaration literally, rather than attempting to parse it with fn_template. (A name is chosen from it using name_from_cmd_regex).
-    AL, // Only inside .zshrc: Use it above a line of the form: alias name='echo hi'. It will add it to your plugin with a name built from name_from_alias_template.
+    CMD, // Only inside sources: Treats the following function declaration literally, rather than attempting to parse it with fn_template. (A name is chosen from it using name_from_cmd_regex).
+    AL, // Only inside sources: Use it above a line of the form: alias name='echo hi'. It will add it to your plugin with a name built from name_from_alias_template.
 }
 ```
 
@@ -399,7 +399,7 @@ The last two have to do with the how the lines describing each action which are 
 
 ## source files
 
-fzs also provides the variables `this=plugin_alias, this_name=plugin_name` when sourcing your `.zshrc` files, which may aid you in defining your functions. For example, the following snippet runs the current command line using pueue:
+fzs also provides the variables `this=plugin_alias, this_name=plugin_name` for your sources, which may aid you in defining your functions. For example, the following snippet runs the current command line using pueue:
 
 ```zsh
 # : CMD,WG
@@ -415,7 +415,7 @@ bindkey '^[z' $this.add.wg
 
 - The use of `CMD` is because `$add.wg` is not a valid variable name and fzf won't be able to supply the actual name correctly.
 
-FZS does not template your `.zshrc` files!
+FZS does not template your sources!
 Advantages:
 
 - Your scripts remain valid zsh, allowing editors to work as normal
