@@ -447,7 +447,7 @@ Disadvantages:
 
 # Todo
 >[!NOTE]
-> The main functionality of fzs has all been **implemented and tested**.
+> The main functionality of fzs has all been **fully implemented and tested**.
 > The remaining minor improvements which are mentioned above and below are planned but haven't a concrete timeline.
 
 - [X] Release
