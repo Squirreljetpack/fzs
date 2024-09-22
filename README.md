@@ -13,10 +13,9 @@ Using the concept of a [plugin](#plugin) to group related [actions](#action), it
 >
 > - Enter/Space can be used to manually accept.
 
+<img src=".README.assets/plugins.png" alt="image-20240922030848010" width=36.4% /> <img src=".README.assets/functions.png" alt="image-20240922030759901" width=41% />
 
-![plugins selector](.README.assets/image-20240918221443416.png | width=30)
-![function selector](.README.assets/image-20240918221450890.png | width=34)
-<caption><i>The actions can do anything from launching apps, to managing docker containers, to managing windows, to running tasks in the background, to selecting files to checkout from git...</i></caption>
+<caption><i>actions can do anything from launching apps, to managing docker containers, to selecting windows, to running tasks in the background, to selecting files to checkout from git...</i></caption>
 </br>
 
 </br>
@@ -50,9 +49,9 @@ FZS was defined to be simple, hackable, modular and portable. It uses a few rule
 
 FZS is mainly an organizational framework. Related actions are grouped into *Plugins*, which live as folders within a `FZS_ROOT_DIR` (default: `~/.fzs`) on your machine.
 
-<img src=".README.assets/dir_structure.png" alt="Directory structure" />
+<img src=".README.assets/dir_structure.png" alt="Directory structure" width=55%/>
 
-A folder is treated as a Plugin if its name matches a `plugin_regex`. The root directory scans for plugins, and for each, the following happens:
+A folder is treated as a Plugin if its name matches a `plugin_regex`. The root directory scans for plugins non-recursively, and for each, the following happens:
 
 > [!NOTE]
 >
@@ -119,18 +118,13 @@ The are allowed on executable filenames too, after the first period. i.e. `rg.wj
 cargo install fzs
 ```
 
-```shell
-# curl the latest binary from Github.
-# todo
-```
-
 3. Optionally, install:
    - [bat](https://github.com/sharkdp/bat)/[eza](https://github.com/eza-community/eza) to improve fzf preview experience.
      - Add the following to your config:
-     - `fzf_dir_cmd = "eza -T -L 2 --icons --color=always ${@}"`
-     - `fzf_pager_cmd = "bat -p --color=always --terminal-width \\$FZF_PREVIEW_COLUMNS"`
+       - `fzf_dir_cmd = "eza -T -L 2 --icons --color=always ${@}"`
+       - `fzf_pager_cmd = "bat -p --color=always --terminal-width \\$FZF_PREVIEW_COLUMNS"`
    - [pueue](https://github.com/Nukesor/pueue) to allow running commands in background.
-     - Use the `PBG` flag to enable this.
+     - Use the `PBG` flag to enable this on a compatible action.
 
 ## Configuration
 
@@ -140,7 +134,7 @@ The config file lives in `~/.config/fzs` or can be supplied with `fzs --config <
 
 - Note that any useful plugin setting can also be configured using modifiers and decorators, so that only the `[settings]` block is needed.
 - The config file can however, override any values set in the scanning stage.
-- Here is an example config:
+- For example:
 
 ```toml
 [[plugins]]
